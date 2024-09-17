@@ -1,13 +1,25 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  imports: [FormsModule, NgIf],
+  templateUrl: `./app.component.html`,
+  styleUrl: `./app.component.css`
 })
 export class AppComponent {
-  title = 'exe01Formulario';
+  contato = {
+    nome: '',
+    email: '',
+    mensagem: ''
+  };
+
+  onSubmit(form: any) {
+    if (form.valid) {
+      console.log('Formulário enviado', this.contato);
+      // Aqui você normalmente enviaria os dados para um servidor
+    }
+  }
 }
